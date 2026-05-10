@@ -1,0 +1,49 @@
+CREATE DATABASE visux;
+
+\c visux;
+
+CREATE TABLE empresas (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    codigo CHAR(4) NOT NULL UNIQUE,
+    cnpj VARCHAR(20) NOT NULL,
+    telefone VARCHAR(30),
+    email VARCHAR(150) NOT NULL,
+    senha VARCHAR(150) NOT NULL,
+    zoom INT DEFAULT 3,
+    centro_lat VARCHAR(40) DEFAULT 0.0,
+    centro_lng VARCHAR(40) DEFAULT 0.0
+);
+
+
+CREATE TABLE postes (
+    id SERIAL PRIMARY KEY,
+    lat VARCHAR(30) NOT NULL, 
+    lng VARCHAR(30) NOT NULL, 
+    id_empresa_dona INT NOT NULL,
+    status INT NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_empresa_dona FOREIGN KEY (id_empresa_dona) REFERENCES empresas(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE notificacoes (
+    id SERIAL PRIMARY KEY,
+    id_poste_associado INT NOT NULL,
+    descricao VARCHAR(250) NULL,
+    status INT NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_poste_associado FOREIGN KEY (id_poste_associado) REFERENCES postes(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE empresas_associadas_postes (
+    id_poste INT NOT NULL,
+    id_empresa INT NOT NULL,
+
+    PRIMARY KEY (id_poste, id_empresa),
+    CONSTRAINT fk_poste FOREIGN KEY (id_poste) REFERENCES postes(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_empresa FOREIGN KEY (id_empresa) REFERENCES empresas(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
