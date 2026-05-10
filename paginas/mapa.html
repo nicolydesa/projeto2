@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa</title>
+    <link rel="icon" href="../assets/icones/logo.png">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    
+    <script src="script/objetos.js"></script>
+    <script src="script/main.js" defer></script>
+    <script src="script/contas.js" defer></script>
+    <script src="script/debug.js" defer></script>
+    
+    
+    <script src="script/maps.js" defer></script>
+</head>
+<body id="maps">
+  
+   <!-- Header principal -->
+    <aside class="main-header">
+        <img src="../assets/icones/login.png" alt="Seu perfil" id="iconeEmpresa">
+        <div id="perfilEmpresa" style="display: none;">
+            <p><strong id="nome-empresa">{Nome da Empresa}</strong> </p>
+            <p><strong>CNPJ:</strong> <span id="cnpj-empresa"> 00.000.000/0000-00</span></p>
+            <p><strong>Telefone:</strong> <span id="telefone-empresa">(11) 91234-5678</span></p>
+        </div>
+        <a href="notificacoes.html">Notificações</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="../index.html">Sair</a>
+
+        </select>
+    </aside>
+
+    <div id="map"></div>
+    <script defer async
+      src="https://maps.googleapis.com/maps/api/js?key=&libraries=maps,marker,drawing&callback=initMap"
+    ></script>
+
+    <main id='maps'>
+      <aside id="left">
+
+        <button class="square-button" id="criarPoste" onclick="togglePopUpCriarPoste(true)" title="Criar poste">
+          <!-- <img src="../assets/icones/lampada.svg" alt="Criar postes"> -->
+           +
+        </button>
+
+        <button class="square-button" id="recaregar" title="Atualizar/Recarregar postes">
+          <img src="../assets/icones/lampMapa.png" alt="Atualizar/Recarregar postes">
+        </button>
+
+        <button class="square-button nao-selecionado" id="connect" onclick="toggleConnect(this)" title="Conectar postes">
+          <img src="../assets/icones/redeMapa.png" alt="Conectar postes">
+        </button>
+
+        <button class="square-button nao-selecionado" id="addAssociadas" onclick="togglePopUpAssociadas(true)" title="Adicionar empresas associadas em postes selecionados.">
+          <img src="../assets/icones/empresaMapa.png" alt="Adicionar empresas associadas em postes selecionados.">
+        </button>
+
+        <button class="square-button nao-selecionado" id="addAssociadas" onclick="empresa_logada.mudarCentro(map.center.lat(), map.center.lng(), map.getZoom())" title="Centralizar o mapa nesta conta.">
+          <img src="../assets/icones/centalizar_mapa.svg" alt="Centralizar o mapa nesta conta">
+        </button>
+
+      </aside>
+
+    <!-- Header principal -->
+   <!-- <aside class="main-header">
+        <img src="../assets/icones/login.png" alt="Seu perfil" id="iconeEmpresa">
+        <div id="perfilEmpresa" style="display: none;">
+            <p><strong id="nome-empresa">{Nome da Empresa}</strong> </p>
+            <p><strong>CNPJ:</strong> <span id="cnpj-empresa"> 00.000.000/0000-00</span></p>
+            <p><strong>Telefone:</strong> <span id="telefone-empresa">(11) 91234-5678</span></p>
+        </div>
+        <a href="notificacoes.html">Notificações</a>
+        <a href="mapa.html">Mapa</a>
+        <a href="../index.html">Sair</a>
+
+        </select>
+    </aside>-->
+
+      <div id="pop-up" class="adicionarPoste"> 
+        <h2 onclick="togglePopUpCriarPoste(false)">x</h2>
+        <h1>Criando poste</h1>
+        <p>De preferência, use coordenadas em valores reais para maior precisão.</p>
+        <div>
+          <label>Latitude:</label>
+          <input type="text" name="lat" id="PopUpLat" placeholder="-27.200476" required>
+          <label>Longitude:</label>
+          <input type="text" name="lat" id="PopUpLng" placeholder="27°18'36.9''S" required>
+        </div>
+        <button onclick="criarPoste(event)" class="bigger-button">Criar</button>
+      </div>
+      
+                  
+      <div id="pop-up" class="adicionarAssociadas"> 
+        <h2 onclick="togglePopUpAssociadas(false)">x</h2>
+        <h1>Adicionando empresas associadas a postes selecionados.</h1>
+        <p>Clique com CTRL nos postes para selecioná-los</p>
+        
+        <div class="listarEmpresas">
+          <h3>Empresas</h3>
+          <h3>Serviço</h3>
+          <div id="selecionarEmpresa">
+            <p></p>
+          </div>
+          <div id="especificarServico">
+            
+          </div>
+      
+      
+        </div>
+        <!-- To-do -->
+        <button onclick="adicionarEmpresaAssociadas(event)" class="bigger-button">Criar</button>
+      </div>
+            
+        </div>
+    </main>
+    
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro Empresa</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="../assets/icones/logo.png">
+  <script src="script/cadastro.js" defer></script>
+</head>
+<body id="login">
+  <img src="../assets/icones/logo.png" alt="Logo" class="logo">
+  <main id="Slogin">
+    <div id="form-login">
+      <h2>Cadastro empresarial</h2>
+      
+      <div>
+        <!-- <a href="#" class="esqueceu">ESQUECEU A SENHA?</a> -> Teria falar com sua empresa chefe -->
+        <input name="nome" type="text" placeholder="Nome da empresa" id="nome" class="input-texts" required>
+        <input name="email" type="email" placeholder="E-mail da empresa" id="email" class="input-texts" required>
+        <input name="cnpj" type="text" placeholder="CNPJ" id="cnpj" class="input-texts"  required>
+        <input name="telefone" type="tel" placeholder="Telefone" id="tel" class="input-texts" required>
+        <input name="codigo" type="text" placeholder="Código único de 4 dígitos da empresa" id="cod" class="input-texts"  required>
+        <input name="senha" type="password" placeholder="Senha" id="senha" class="input-texts" required>
+        <input name="confirm-senha" type="password" placeholder="Confirmar senha"  class="input-texts" id="confirm-senha" required>
+
+        
+        <button class="bigger-button" onclick="handleSubmit(event)">Cadastrar</button>  
+      </div>
+      
+
+    </div>
+  </main>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+            <a href="https://instagram.com/seu_usuario" target="_blank">
+                <img
+                src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+                alt="Instagram"
+                class="instagram-icon"
+                />
+            </a>
+            <p>Contato: (11) 91234-5678</p>
+            
+            </div>
+
+            <div class="footer-center">
+            <p>IFC Campus Concórdia</p>
+            </div>
+
+            <div class="footer-copy">
+            <p>&copy; Todos os direitos reservados | 2025 </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
